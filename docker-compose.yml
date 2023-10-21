@@ -1,14 +1,12 @@
 version: "3.4"
 
 networks:
-  k6:
   grafana:
 
 services:
   influxdb:
     image: influxdb:1.8
     networks:
-      - k6
       - grafana
     ports:
       - "8086:8086"
