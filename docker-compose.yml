@@ -23,8 +23,9 @@ services:
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_BASIC_ENABLED=false
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
     volumes:
-      - "grafana_storage:/var/lib/grafana"
-
-volumes:
-  grafana_storage: {}
+      - ./grafana:/etc/grafana/provisioning/
+      - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml
+      - ./grafana/dashboard.yml:/etc/grafana/provisioning/dashboards/dashboard.yaml
+      - ./grafana/k6dashboard.json:/etc/grafana/provisioning/dashboards/k6dashboard.json
